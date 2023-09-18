@@ -4,6 +4,7 @@ from PySide6.QtCore import Qt
 
 styles = '''
     QPushButton {{
+        outline: {};
         border: {};
         margin: {};
         vertical-align: {};
@@ -21,15 +22,18 @@ styles = '''
 
     QPushButton::hover {{
         background-color: {};
+        border-color: {};
+        outline: {};
     }}
 '''
 # rgb(255, 255, 255)
 # rgb(33, 43, 54)
-class AYOutlineButton(QPushButton):
+class AYOutlinedButton(QPushButton):
     def __init__(
         self,
-        text="AY Default Button",
-        border="0px",
+        text="Default",
+        outline="0px",
+        border="1px solid rgba(145, 158, 171, 0.32)",
         margin="0px",
         vertical_align="middle",
         text_decoration="none",
@@ -41,15 +45,18 @@ class AYOutlineButton(QPushButton):
         padding_x="6px",
         padding_y="12px",
         border_radius="8px",
-        color="rgb(255, 255, 255)",
-        background_color="rgb(33, 43, 54)",
+        color="rgb(33, 43, 54)",
+        background_color="transparent",
         hover_bg_color="rgb(58, 75, 94)",
+        hover_border_color="rgb(33, 43, 54)",
+        hover_outline="3px",
         disabled=False
     ):
         super().__init__()
         
         self.setText(text)
         self.setStyleSheet(styles.format(
+            outline,
             border,
             margin,
             vertical_align,
@@ -64,7 +71,9 @@ class AYOutlineButton(QPushButton):
             border_radius,
             color,
             background_color,
-            hover_bg_color
+            hover_bg_color,
+            hover_border_color,
+            hover_outline
         ))
         if disabled:
             self.setEnabled(False)

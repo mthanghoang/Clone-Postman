@@ -42,7 +42,7 @@ class AYContainedButton(QPushButton):
         padding_y="12px",
         border_radius="8px",
         color="rgb(255, 255, 255)",
-        background_color="rgb(33, 43, 54)",
+        background_color="rgb(33, 43, 54)", # rgb(33, 43, 54)
         hover_bg_color="rgb(58, 75, 94)",
         disabled=False
     ):
