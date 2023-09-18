@@ -1,2 +1,2 @@
-from .buttons import HButton, PButton
+from .buttons import AYButton
 from .sliders import SSlider, TSlider

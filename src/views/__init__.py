@@ -1,1 +1,1 @@
-from .components import HButton, PButton, TSlider, SSlider
+from .components import AYButton, TSlider, SSlider

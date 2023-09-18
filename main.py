@@ -13,7 +13,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import (QSize,
                             Qt)
-from src.views import HButton, PButton, SSlider, TSlider
+from src.views import AYButton, SSlider, TSlider
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -36,25 +36,25 @@ class MainWindow(QMainWindow):
         section_header.setFixedHeight(50)
         hlo_section_header = QHBoxLayout(section_header)
 
-        # tao HButton
-        btn_hbutton = HButton()
-        btn_hbutton.setText("Hai Button")
-        btn_hbutton.setStyleSheet('''
-    outline: 0px;
-    border: 0px;
-    margin: 0px;
-    vertical-align: middle;
-    text-decoration: none;
-    font-weight: 700;
-    line-height: 1.71429;
-    font-size: 0.875rem;
-    text-transform: unset;
-    font-family: "Public Sans", sans-serif;
-    min-width: 64px;
-    padding: 6px 12px;
-    border-radius: 8px;
-    background-color: rgb(0, 167, 111);
-                                    ''')
+        # tao AYDefaultButton
+        btn_hbutton = AYButton(
+            text="AY Default Button",
+            border="0px",
+            margin="0px",
+            vertical_align="middle",
+            text_decoration="none",
+            font_weight="700",
+            line_height="1.71429",
+            font_size="0.875rem",
+            font_family='"Public Sans", sans-serif',
+            min_width="64px",
+            padding_x="6px",
+            padding_y="12px",
+            border_radius="8px",
+            color="rgb(255, 255, 255)",
+            background_color="rgb(33, 43, 54)",
+            hover_bg_color="rgb(58, 75, 94)")
+
         hlo_section_header.addWidget(btn_hbutton)
 
         # body
