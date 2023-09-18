@@ -88,8 +88,8 @@ class MainWindow(QMainWindow):
 
         # row of outlined buttons
         btn_outlined_default = AYOutlinedButton()
-        btn_outlined_primary = AYOutlinedButton(text="Primary", color="rgb(0, 167, 111)", hover_border_color="rgb(0, 167, 111)", hover_bg_color="rgba(0, 167, 111, 0.1)")
-        btn_outlined_secondary = AYOutlinedButton(text="Secondary", color="rgb(142, 51, 255)", hover_border_color="rgb(142, 51, 255)", hover_bg_color="rgba(142, 51, 255, 0.1)")
+        btn_outlined_primary = AYOutlinedButton(text="Primary", color="rgb(0, 167, 111)", border="1px solid rgb(0, 167, 111)", hover_bg_color="rgba(0, 167, 111, 0.1)")
+        btn_outlined_secondary = AYOutlinedButton(text="Secondary", color="rgb(142, 51, 255)", border=" 1px solid rgb(142, 51, 255)", hover_bg_color="rgba(142, 51, 255, 0.1)")
         btn_outlined_disabled = AYOutlinedButton(text="Disabled", color="rgba(145, 158, 171, 0.8)", disabled=True)
 
         hlo_section_header_1.addWidget(btn_outlined_default)
