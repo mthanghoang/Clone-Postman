@@ -1,2 +1,2 @@
-from .buttons import AYButton
+from .buttons import *
 from .sliders import SSlider, TSlider

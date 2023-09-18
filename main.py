@@ -13,7 +13,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import (QSize,
                             Qt)
-from src.views import AYButton, SSlider, TSlider
+from src.views import AYContainedButton, SSlider, TSlider
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -28,38 +28,60 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(main_widget)
 
         # thiet lap kich thuoc ban dau cho cua so ung dung
-        self.resize(QSize(800, 600))
+        self.resize(QSize(1500, 700))
 
         # section header
         section_header = QFrame()
-        section_header.setStyleSheet("background: red")
+        section_header.setStyleSheet("background: gray")
         section_header.setFixedHeight(50)
         hlo_section_header = QHBoxLayout(section_header)
 
         # tao AYDefaultButton
-        btn_hbutton = AYButton(
-            text="AY Default Button",
-            border="0px",
-            margin="0px",
-            vertical_align="middle",
-            text_decoration="none",
-            font_weight="700",
-            line_height="1.71429",
-            font_size="0.875rem",
-            font_family='"Public Sans", sans-serif',
-            min_width="64px",
-            padding_x="6px",
-            padding_y="12px",
-            border_radius="8px",
-            color="rgb(255, 255, 255)",
-            background_color="rgb(33, 43, 54)",
-            hover_bg_color="rgb(58, 75, 94)")
+        btn_aydefault = AYContainedButton(text="Default")
+            # text="AY Default Button",
+            # border="0px",
+            # margin="0px",
+            # vertical_align="middle",
+            # text_decoration="none",
+            # font_weight="700",
+            # line_height="1.71429",
+            # font_size="0.875rem",
+            # font_family='"Public Sans", sans-serif',
+            # min_width="64px",
+            # padding_x="6px",
+            # padding_y="12px",
+            # border_radius="8px",
+            # color="rgb(255, 255, 255)",
+            # background_color="rgb(33, 43, 54)",
+            # hover_bg_color="rgb(58, 75, 94)"
+        
+        btn_ay_primary = AYContainedButton(
+            text="Primary",
+            background_color="rgb(0, 167, 111)",
+            hover_bg_color="rgb(12, 226, 154)"
+        )
 
-        hlo_section_header.addWidget(btn_hbutton)
+        btn_ay_secondary = AYContainedButton(
+            text="Secondary",
+            background_color="rgb(142, 51, 255)",
+            hover_bg_color="rgb(57, 14, 109)"
+        )
+
+        btn_ay_disabled = AYContainedButton(
+            text="Disabled",
+            background_color="rgba(145, 158, 171, 0.24)",
+            hover_bg_color="rgba(145, 158, 171, 0.24)",
+            disabled=True
+        )
+
+        hlo_section_header.addWidget(btn_aydefault)
+        hlo_section_header.addWidget(btn_ay_primary)
+        hlo_section_header.addWidget(btn_ay_secondary)
+        hlo_section_header.addWidget(btn_ay_disabled)
 
         # body
         section_body = QFrame()
-        section_body.setStyleSheet("background: red")
+        section_body.setStyleSheet("background: gray")
 
         # tao layout cho body: co 2 cach
         # Cach 1:
