@@ -21,6 +21,7 @@ styles = '''
 
     QPushButton::hover {{
         background-color: {};
+        border-color: {};
     }}
 '''
 # rgb(255, 255, 255)
@@ -44,6 +45,7 @@ class AYContainedButton(QPushButton):
         color="rgb(255, 255, 255)",
         background_color="rgb(33, 43, 54)", # rgb(33, 43, 54)
         hover_bg_color="rgb(58, 75, 94)",
+        hover_border_color="black",
         disabled=False
     ):
         super().__init__()
@@ -64,7 +66,8 @@ class AYContainedButton(QPushButton):
             border_radius,
             color,
             background_color,
-            hover_bg_color
+            hover_bg_color,
+            hover_border_color,
         ))
         if disabled:
             self.setEnabled(False)

@@ -13,7 +13,12 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import (QSize,
                             Qt)
-from src.views import AYContainedButton, SSlider, TSlider, AYOutlinedButton
+from src.views import (AYContainedButton, 
+                       SSlider, 
+                       TSlider, 
+                       AYOutlinedButton,
+                       CustomRadioButton,
+                       CustomRadioButtonPaint)
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -41,6 +46,12 @@ class MainWindow(QMainWindow):
         section_header_1.setStyleSheet("background: gray")
         section_header_1.setFixedHeight(50)
         hlo_section_header_1 = QHBoxLayout(section_header_1)
+
+        # section header for custom radio buttons
+        section_header_2 = QFrame()
+        section_header_2.setStyleSheet("background: gray")
+        section_header_2.setFixedHeight(50)
+        hlo_section_header_2 = QHBoxLayout(section_header_2)
 
         # row of contained buttons
         btn_aydefault = AYContainedButton(text="Default")
@@ -88,14 +99,33 @@ class MainWindow(QMainWindow):
 
         # row of outlined buttons
         btn_outlined_default = AYOutlinedButton()
-        btn_outlined_primary = AYOutlinedButton(text="Primary", color="rgb(0, 167, 111)", border="1px solid rgb(0, 167, 111)", hover_bg_color="rgba(0, 167, 111, 0.1)")
-        btn_outlined_secondary = AYOutlinedButton(text="Secondary", color="rgb(142, 51, 255)", border=" 1px solid rgb(142, 51, 255)", hover_bg_color="rgba(142, 51, 255, 0.1)")
+
+        btn_outlined_primary = AYOutlinedButton(
+            text="Primary", color="rgb(0, 167, 111)", 
+            border="1px solid rgb(0, 167, 111)", 
+            hover_bg_color="rgba(0, 167, 111, 0.1)",
+            hover_border_color="rgb(0, 167, 111)"
+            # hover_outline_style=""
+        )
+        btn_outlined_secondary = AYOutlinedButton(
+            text="Secondary", 
+            color="rgb(142, 51, 255)", 
+            border="1px solid rgb(142, 51, 255)", 
+            hover_bg_color="rgba(142, 51, 255, 0.1)",
+            hover_border_color="rgb(142, 51, 255)"
+        )
         btn_outlined_disabled = AYOutlinedButton(text="Disabled", color="rgba(145, 158, 171, 0.8)", disabled=True)
 
         hlo_section_header_1.addWidget(btn_outlined_default)
         hlo_section_header_1.addWidget(btn_outlined_primary)
         hlo_section_header_1.addWidget(btn_outlined_secondary)
         hlo_section_header_1.addWidget(btn_outlined_disabled)
+
+
+        # row of custom radio buttons
+        radio_btn_qss = CustomRadioButton()
+
+        hlo_section_header_2.addWidget(radio_btn_qss)
 
         # body
         section_body = QFrame()
@@ -140,6 +170,7 @@ class MainWindow(QMainWindow):
         # them cac section vao main layout
         main_layout.addWidget(section_header)
         main_layout.addWidget(section_header_1)
+        main_layout.addWidget(section_header_2)
         main_layout.addWidget(section_body)
         body_layout.addWidget(splitter_main_bottom)
         bottom_layout.addWidget(section_bottom_menu)
