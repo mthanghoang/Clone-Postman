@@ -17,13 +17,21 @@ from src.views import (AYContainedButton,
                        SSlider, 
                        TSlider, 
                        AYOutlinedButton,
-                       CustomRadioButton)
+                       CustomRadioButton,
+                      )
+from src.theme import palette
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         # doi title
         self.setWindowTitle("POSTMAN")
+
+        # init theme
+        self.theme = palette("dark")
+        print(self.theme)
+
+
         # khai bao layout cho QMainWindow
         main_layout = QVBoxLayout()
 
