@@ -17,8 +17,7 @@ from src.views import (AYContainedButton,
                        SSlider, 
                        TSlider, 
                        AYOutlinedButton,
-                       CustomRadioButton,
-                       CustomRadioButtonPaint)
+                       CustomRadioButton)
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -126,6 +125,7 @@ class MainWindow(QMainWindow):
         radio_btn_qss = CustomRadioButton()
 
         hlo_section_header_2.addWidget(radio_btn_qss)
+
 
         # body
         section_body = QFrame()
