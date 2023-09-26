@@ -135,6 +135,7 @@ class MainWindow(QMainWindow):
         hlo_section_header_2.addWidget(radio_btn_qss)
 
 
+
         # body
         section_body = QFrame()
         section_body.setStyleSheet("background: gray")
