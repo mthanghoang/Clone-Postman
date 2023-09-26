@@ -2,6 +2,7 @@
 
 # SETUP COLORS
 from PIL import ImageColor
+from ..utils import alpha
 
 GREY = {
   "0": '#FFFFFF',
@@ -70,12 +71,7 @@ ERROR = {
   "contrastText": '#FFFFFF',
 }
 
-def alpha(hex_color, opacity):
-  rgb_tuple = ImageColor.getcolor(hex_color, "RGB")
-  rgb_list = list(rgb_tuple)
-  rgb_list.append(opacity)
-  rgba = tuple(rgb_list)
-  return rgba
+
 
 COMMON = {
   "common": { "black": '#000000', "white": '#FFFFFF' },

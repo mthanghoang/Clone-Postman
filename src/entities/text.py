@@ -1,8 +1,10 @@
-class Text:
-    primary: str
-    secondary: str
+class TextEntity:
+    primary: str = "#FFFFF"
+    secondary: str 
     disabled: str
 
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, options):
+        self.primary = options["primary"]
+        self.secondary = options["secondary"]
+        self.disabled = options["disabled"]

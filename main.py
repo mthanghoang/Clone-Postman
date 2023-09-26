@@ -28,8 +28,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("POSTMAN")
 
         # init theme
-        self.theme = palette("dark")
-        print(self.theme)
+        # self.theme = palette("dark")
+        # print(self.theme)
 
 
         # khai bao layout cho QMainWindow

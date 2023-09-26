@@ -1,6 +1,10 @@
+from .text import TextEntity
+
+
 class ThemeEntity:
-    mode: str = "dark",
-    text:
+    mode: str = "dark"
+    text: TextEntity = None
+    background: 
 
 
 

@@ -6,9 +6,8 @@ from PySide6.QtCore import Qt
 
 styles = '''
     QRadioButton {
-        background-color: yellow;
+        background-color: white;
         color: red;
-        spacing: 20px;
         height: 20px;
     }
 
@@ -17,26 +16,31 @@ styles = '''
     }
 
     QRadioButton::indicator::unchecked {
-        border: 1px solid black; 
+        border: 2px solid black;
         height: 14px;
         width: 14px;
-        border-radius: 8px;
+        border-radius: 9px;
         background: transparent;
     }
 
     QRadioButton::indicator::unchecked::hover {
         background: rgba(0, 167, 111, 0.2);
+        outline: solid 3px
     }
 
     QRadioButton::indicator::checked {
-        
+        border: 2px solid black;
+        height: 14px;
+        width: 14px;
+        border-radius: 9px;
+        background: rgb(0, 167, 111);
     }
     
 '''
 # 
 
 class CustomRadioButton(QRadioButton):
-    def __init__(self, text="This is a radio button", disabled=False):
+    def __init__(self, text="Radio button", disabled=False):
         super().__init__(text=text)
 
         self.setStyleSheet(styles)
