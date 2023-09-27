@@ -6,3 +6,4 @@ def alpha(hex_color, opacity):
     rgb_list.append(opacity)
     rgba = tuple(rgb_list)
     return f"rgba({rgba})"
+

@@ -56,7 +56,7 @@ class MainWindow(QMainWindow):
 
         # section header for custom radio buttons
         section_header_2 = QFrame()
-        section_header_2.setStyleSheet("background: gray")
+        section_header_2.setStyleSheet("background: white")
         section_header_2.setFixedHeight(50)
         hlo_section_header_2 = QHBoxLayout(section_header_2)
 
@@ -108,7 +108,8 @@ class MainWindow(QMainWindow):
         btn_outlined_default = AYOutlinedButton()
 
         btn_outlined_primary = AYOutlinedButton(
-            text="Primary", color="rgb(0, 167, 111)", 
+            text="Primary", 
+            color="rgb(0, 167, 111)", 
             border="1px solid rgb(0, 167, 111)", 
             hover_bg_color="rgba(0, 167, 111, 0.1)",
             hover_border_color="rgb(0, 167, 111)"
@@ -130,9 +131,16 @@ class MainWindow(QMainWindow):
 
 
         # row of custom radio buttons
-        radio_btn_qss = CustomRadioButton()
+        radio_btn_default = CustomRadioButton()
+        radio_btn_primary = CustomRadioButton(text="Primary",
+                                              bg_color_unchecked_hover="#ace8cd",
+                                              border_color_checked="#00a76f")
+        radio_btn_disabled = CustomRadioButton(text="Disabled",
+                                               disabled=True)
 
-        hlo_section_header_2.addWidget(radio_btn_qss)
+        hlo_section_header_2.addWidget(radio_btn_default)
+        hlo_section_header_2.addWidget(radio_btn_primary)
+        hlo_section_header_2.addWidget(radio_btn_disabled)
 
 
 
