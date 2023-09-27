@@ -1,7 +1,7 @@
 class TextEntity:
     primary: str = "#FFFFF"
-    secondary: str 
-    disabled: str
+    secondary: str = ""
+    disabled: str = ""
 
 
     def __init__(self, options):

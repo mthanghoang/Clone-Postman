@@ -3,6 +3,7 @@
 # SETUP COLORS
 from PIL import ImageColor
 from ..utils import alpha
+from ..entities import ThemeEntity, ActionEntity, CommonEntity
 
 GREY = {
   "0": '#FFFFFF',
@@ -73,7 +74,7 @@ ERROR = {
 
 
 
-COMMON = {
+COMMON = CommonEntity({
   "common": { "black": '#000000', "white": '#FFFFFF' },
   "primary": PRIMARY,
   "secondary": SECONDARY,
@@ -83,7 +84,7 @@ COMMON = {
   "error": ERROR,
   "grey": GREY,
   "divider": alpha(GREY["500"], 0.24),
-  "action": {
+  "action": ActionEntity({
     "hover": alpha(GREY["500"], 0.08),
     "selected": alpha(GREY["500"], 0.16),
     "disabled": alpha(GREY["500"], 0.8),
@@ -91,12 +92,12 @@ COMMON = {
     "focus": alpha(GREY["500"], 0.24),
     "hoverOpacity": 0.08,
     "disabledOpacity": 0.48,
-  },
-}
+  })
+}) 
 
-class Struct:
-  def __init__(self, **entries):
-    self.__dict__.update(entries)
+# class Struct:
+#   def __init__(self, **entries):
+#     self.__dict__.update(entries)
 
 
 def palette(theme_mode):
@@ -108,7 +109,7 @@ def palette(theme_mode):
       "disabled": GREY["500"],
     },
     "background": { "paper": '#FFFFFF', "default": '#FFFFFF', "neutral": GREY["200"] },
-    "action": COMMON["action"].update({"active": GREY["600"]})
+    "action": COMMON.action.update({"active": GREY["600"]})
   }
 
   light.update(COMMON)
