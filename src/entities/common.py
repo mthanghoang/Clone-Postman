@@ -1,9 +1,10 @@
 from .action import ActionEntity
+from .palette import PrimaryEntity, SecondaryEntity
 
 class CommonEntity:
     common: str = ""
-    primary: str = ""
-    secondary: str = ""
+    primary: PrimaryEntity = None
+    secondary: SecondaryEntity = None
     info: str = ""
     success: str = ""
     warning: str = ""
@@ -12,7 +13,7 @@ class CommonEntity:
     divider: str = ""
     action: ActionEntity = None
     
-    def __init__(self, options):
+    def __init__(self, options: dict):
         self.common = options["common"]
         self.primary = options["primary"]
         self.secondary = options["secondary"]

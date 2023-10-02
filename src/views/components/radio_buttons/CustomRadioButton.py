@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QRadioButton
+from PySide6.QtWidgets import QRadioButton, QFrame
 from PySide6.QtGui import QCursor, QPainter, QPen, QBrush, QColor
 from PySide6.QtCore import Qt
 
@@ -7,7 +7,7 @@ styles = '''
     QRadioButton {{
         background-color: transparent;
         color: black;
-        spacing: 2px;
+        spacing: 6px;
     }}
 
     QRadioButton::indicator::unchecked {{
@@ -41,6 +41,7 @@ class CustomRadioButton(QRadioButton):
 
         self._hovered = False
 
+
         if disabled:
             self.setEnabled(False)
         else:
@@ -59,7 +60,9 @@ class CustomRadioButton(QRadioButton):
         if self.isChecked():
             painter = QPainter(self)
             painter.setRenderHint(QPainter.Antialiasing)
-            
+
+            self.setFixedHeight(30)
+            print("self.height_______", self.height())
             # Draw the circle to the left of the content area
             # circle_diameter = min(self.height(), self.width())
             circle_diameter = 16
@@ -67,6 +70,31 @@ class CustomRadioButton(QRadioButton):
             circle_x = 1
             circle_y = self.height() // 2 - circle_radius
 
+            # fill outermost ring 
+            if self._hovered:
+                painter.setPen(Qt.NoPen)
+                painter.setBrush(QBrush(QColor(self._bg_color_checked_hover)))
+                painter.drawEllipse(circle_x - 5, 
+                                    circle_y - 5, 
+                                    circle_diameter + 10, 
+                                    circle_diameter + 10)
+
+            
+            # if self._hovered:
+            #     # fill outer circle when hovering (bg color when checked and hovered)
+            #     painter.setPen(Qt.NoPen)
+            #     painter.setBrush(QBrush(QColor(self._bg_color_checked_hover)))
+            #     painter.drawEllipse(circle_x + 1, 
+            #                     circle_y + 1, 
+            #                     circle_diameter - 2, 
+            #                     circle_diameter - 2)
+                
+            #     # fill the ring outside the border
+            #     # painter.drawEllipse(circle_x - 2,
+            #     #                     circle_y - 2,
+            #     #                     circle_diameter + 4,
+            #     #                     circle_diameter + 4)
+            
             # Outer circle
             outer_pen = QPen(QColor(self._border_color_checked), 2)
             painter.setPen(outer_pen)
@@ -75,15 +103,6 @@ class CustomRadioButton(QRadioButton):
                                 circle_y, 
                                 circle_diameter, 
                                 circle_diameter)
-            
-            if self._hovered:
-                # fill outer circle when hovering (bg color when checked and hovered)
-                painter.setPen(Qt.NoPen)
-                painter.setBrush(QBrush(QColor(self._bg_color_checked_hover)))
-                painter.drawEllipse(circle_x + 1, 
-                                circle_y + 1, 
-                                circle_diameter - 2, 
-                                circle_diameter - 2)
 
             # Inner circle
             inner_radius = int(circle_radius * 0.6)
@@ -98,7 +117,7 @@ class CustomRadioButton(QRadioButton):
             
             # Draw the text in the content area
             painter.setPen(QPen(Qt.black, 2))
-            text_rect = self.rect().adjusted(circle_diameter + 4, 0, 0, 0)
+            text_rect = self.rect().adjusted(circle_diameter + 8, 0, 0, 0)
             painter.drawText(text_rect, Qt.AlignVCenter, self.text())
             
             painter.end()

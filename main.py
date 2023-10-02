@@ -28,8 +28,9 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("POSTMAN")
 
         # init theme
-        # self.theme = palette("dark")
-        # print(self.theme)
+        self.theme = palette("dark")
+        # print("self.theme_____", self.theme.__dict__)
+        # print("self.theme.action_____", self.theme.action.__dict__)
 
 
         # khai bao layout cho QMainWindow
@@ -63,22 +64,28 @@ class MainWindow(QMainWindow):
         # row of contained buttons
         btn_aydefault = AYContainedButton(text="Default")
             
+        # btn_ay_primary = AYContainedButton(
+        #     text="Primary",
+        #     background_color="rgb(0, 167, 111)",
+        #     hover_bg_color="rgb(12, 226, 154)"
+        # )
+
         btn_ay_primary = AYContainedButton(
             text="Primary",
-            background_color="rgb(0, 167, 111)",
+            background_color=self.theme.primary.darker,
             hover_bg_color="rgb(12, 226, 154)"
         )
 
         btn_ay_secondary = AYContainedButton(
             text="Secondary",
-            background_color="rgb(142, 51, 255)",
+            background_color=self.theme.secondary.main,
             hover_bg_color="rgb(57, 14, 109)"
         )
 
         btn_ay_disabled = AYContainedButton(
             text="Disabled",
             color="rgba(145, 158, 171, 0.8)",
-            background_color="rgba(145, 158, 171, 0.24)",
+            background_color=self.theme.action.disabled,
             hover_bg_color="rgba(145, 158, 171, 0.24)",
             disabled=True
         )
@@ -115,16 +122,16 @@ class MainWindow(QMainWindow):
 
 
         # row of custom radio buttons
-        radio_btn_default = CustomRadioButton()
+        # radio_btn_default = CustomRadioButton()
         radio_btn_primary = CustomRadioButton(text="Primary",
                                               bg_color_unchecked_hover="#ace8cd",
                                               border_color_checked="#00a76f")
-        radio_btn_disabled = CustomRadioButton(text="Disabled",
-                                               disabled=True)
+        # radio_btn_disabled = CustomRadioButton(text="Disabled",
+        #                                        disabled=True)
 
-        hlo_section_header_2.addWidget(radio_btn_default)
+        # hlo_section_header_2.addWidget(radio_btn_default)
         hlo_section_header_2.addWidget(radio_btn_primary)
-        hlo_section_header_2.addWidget(radio_btn_disabled)
+        # hlo_section_header_2.addWidget(radio_btn_disabled)
 
 
 

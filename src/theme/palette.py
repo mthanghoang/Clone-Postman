@@ -1,9 +1,13 @@
 # import { alpha } from '@mui/material/styles'
 
 # SETUP COLORS
-from PIL import ImageColor
+
 from ..utils import alpha
-from ..entities import ThemeEntity, ActionEntity, CommonEntity
+from ..entities import (ThemeEntity, 
+                        ActionEntity, 
+                        CommonEntity, 
+                        PrimaryEntity,
+                        SecondaryEntity)
 
 GREY = {
   "0": '#FFFFFF',
@@ -26,6 +30,7 @@ PRIMARY = {
   "darker": '#005249',
   "contrastText": '#FFFFFF',
 }
+
 
 SECONDARY = {
   "lighter": '#D6E4FF',
@@ -72,33 +77,39 @@ ERROR = {
   "contrastText": '#FFFFFF',
 }
 
+ACTION = {
+    "hover": alpha(GREY["500"], 0.08),
+    "selected": alpha(GREY["500"], 0.16),
+    "disabled": alpha(GREY["500"], 0.8),
+    "disabled_background": alpha(GREY["500"], 0.24),
+    "focus": alpha(GREY["500"], 0.24),
+    "hover_opacity": 0.08,
+    "disabled_opacity": 0.48,
+  }
+
+PRIMARY_OBJ = PrimaryEntity(PRIMARY)
+SECONDARY_OBJ = SecondaryEntity(SECONDARY)
+ACTION_OBJ = ActionEntity(ACTION)
 
 
-COMMON = CommonEntity({
+COMMON = {
   "common": { "black": '#000000', "white": '#FFFFFF' },
-  "primary": PRIMARY,
-  "secondary": SECONDARY,
+  "primary": PRIMARY_OBJ,
+  "secondary": SECONDARY_OBJ,
   "info": INFO,
   "success": SUCCESS,
   "warning": WARNING,
   "error": ERROR,
   "grey": GREY,
   "divider": alpha(GREY["500"], 0.24),
-  "action": ActionEntity({
-    "hover": alpha(GREY["500"], 0.08),
-    "selected": alpha(GREY["500"], 0.16),
-    "disabled": alpha(GREY["500"], 0.8),
-    "disabledBackground": alpha(GREY["500"], 0.24),
-    "focus": alpha(GREY["500"], 0.24),
-    "hoverOpacity": 0.08,
-    "disabledOpacity": 0.48,
-  })
-}) 
+  "action": ACTION_OBJ
+}
 
 # class Struct:
 #   def __init__(self, **entries):
 #     self.__dict__.update(entries)
 
+COMMON_OBJ = CommonEntity(COMMON)
 
 def palette(theme_mode):
   light = {
@@ -109,10 +120,12 @@ def palette(theme_mode):
       "disabled": GREY["500"],
     },
     "background": { "paper": '#FFFFFF', "default": '#FFFFFF', "neutral": GREY["200"] },
-    "action": COMMON.action.update({"active": GREY["600"]})
+    "action": COMMON_OBJ.action.update(GREY["600"]),
   }
 
-  light.update(COMMON)
+  # light.update(COMMON)
+  light_theme_obj = ThemeEntity(light, COMMON)
+
 
   dark = {
     "mode": 'dark',
@@ -126,15 +139,14 @@ def palette(theme_mode):
       "default": GREY["900"],
       "neutral": alpha(GREY["500"], 0.16),
     },
-    "action": COMMON["action"].update({"active": GREY["500"]})
+    "action": COMMON_OBJ.action.update({"active": GREY["500"]})
   }
 
-  dark.update(COMMON)
+  # dark.update(COMMON)
 
-  dark_theme_entity = ThemeEntity(dark)
+  dark_theme_obj = ThemeEntity(dark, COMMON)
 
 
-  return light if theme_mode == "light" else dark
-
+  return light_theme_obj if theme_mode == "light" else light_theme_obj
 
 
